@@ -39,7 +39,7 @@ public class TodoListController : ControllerBase
     [HttpDelete("{id}")]
     public async Task Delete(int id)
     {
-        await _reportService.Remove(id);
+        await _reportService.Update(id);
 
         _context.TodoItens.Remove(new TodoItem(id));
 
@@ -47,7 +47,7 @@ public class TodoListController : ControllerBase
     }
 
     [HttpPost]
-    public async Task Post(TodoItemCreate model)
+    public async Task<TodoItem> Post(TodoItemCreate model)
     {
         var newTodoItem = new TodoItem(model.Name, model.Task);
 
@@ -56,5 +56,7 @@ public class TodoListController : ControllerBase
         await _reportService.Update(model.Name);
 
         await _context.SaveChangesAsync();
+
+        return newTodoItem;
     }
 }

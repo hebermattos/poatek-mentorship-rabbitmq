@@ -44,7 +44,7 @@ public class ReportService
         }
     }
 
-    public async Task Remove(int todoItemId)
+    public async Task Update(int todoItemId)
     {
         var todoItem = await _context.TodoItens.AsNoTracking().FirstAsync(x => x.Id == todoItemId);
 

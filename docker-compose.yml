@@ -19,13 +19,6 @@ services:
       - ./SQL/docker-db-init.sh:/db-init.sh
       - ./SQL/docker-db-init.sql:/db-init.sql
 
-  rabbitmq:
-    image: rabbitmq:3-management
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-      - "5552:5552"    
-        
 volumes:
   dbdata:
     driver: local

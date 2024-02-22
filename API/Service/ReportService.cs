@@ -51,6 +51,11 @@ public class ReportService
         var todoReport = await _context.TodoReports.FirstAsync(x => x.Name.Equals(todoItem.Name));
 
         todoReport.TaskCount--;
+
+        if (todoItem.Completed)
+            todoReport.Taskfinished--;
+        else
+            todoReport.TaskUnfinished--;
     }
 
 

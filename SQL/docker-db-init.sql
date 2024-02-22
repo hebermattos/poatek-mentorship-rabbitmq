@@ -34,3 +34,53 @@ GO
 
 COMMIT;
 GO
+
+BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [TodoItens] ADD [Task] nvarchar(max) NOT NULL DEFAULT N'';
+GO
+
+CREATE TABLE [TodoReports] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [TaskCount] int NOT NULL,
+    CONSTRAINT [PK_TodoReports] PRIMARY KEY ([Id])
+);
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240222224931_report', N'6.0.26');
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [TodoItens] ADD [Completed] bit NOT NULL DEFAULT CAST(0 AS bit);
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240222230823_completed', N'6.0.26');
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [TodoReports] ADD [TaskUnfinished] int NOT NULL DEFAULT 0;
+GO
+
+ALTER TABLE [TodoReports] ADD [Taskfinished] int NOT NULL DEFAULT 0;
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240222231652_completed-report', N'6.0.26');
+GO
+
+COMMIT;
+GO

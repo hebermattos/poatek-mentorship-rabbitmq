@@ -76,3 +76,4 @@ C:\Projects\rabbitmq-example\API\obj\Debug\net6.0\refint\api.dll
 C:\Projects\rabbitmq-example\API\obj\Debug\net6.0\api.pdb
 C:\Projects\rabbitmq-example\API\obj\Debug\net6.0\api.genruntimeconfig.cache
 C:\Projects\rabbitmq-example\API\obj\Debug\net6.0\ref\api.dll
+C:\Projects\rabbitmq-example\API\obj\Debug\net6.0\api.sourcelink.json

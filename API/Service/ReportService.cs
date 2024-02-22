@@ -24,6 +24,23 @@ public class ReportService
         else
         {
             todoReport.TaskCount++;
+            todoReport.TaskUnfinished++;
+        }
+    }
+
+    public async Task Update(string name, bool completed)
+    {
+        var todoReport = await _context.TodoReports.FirstAsync(x => x.Name.Equals(name));
+
+        if (completed)
+        {
+            todoReport.Taskfinished++;
+            todoReport.TaskUnfinished--;
+        }
+        else
+        {
+            todoReport.Taskfinished--;
+            todoReport.TaskUnfinished++;
         }
     }
 
@@ -35,4 +52,6 @@ public class ReportService
 
         todoReport.TaskCount--;
     }
+
+
 }

@@ -22,20 +22,36 @@ public class TodoListController : ControllerBase
         return await _context.TodoItens.AsNoTracking().ToListAsync();
     }
 
+    [HttpPut("{id}")]
+    public async Task<TodoItem> Put(int id, TodoItemUpdate model)
+    {
+        var todoItem = await _context.TodoItens.FirstAsync(x => x.Id == id);
+
+        todoItem.Completed = model.Completed;
+
+        await _reportService.Update(todoItem.Name, model.Completed);
+
+        await _context.SaveChangesAsync();
+
+        return todoItem;
+    }
+
     [HttpDelete("{id}")]
     public async Task Delete(int id)
     {
         await _reportService.Remove(id);
 
-        _context.TodoItens.Remove(new TodoItem { Id = id });
+        _context.TodoItens.Remove(new TodoItem(id));
 
         await _context.SaveChangesAsync();
     }
 
     [HttpPost]
-    public async Task Post(TodoItem model)
+    public async Task Post(TodoItemCreate model)
     {
-        await _context.TodoItens.AddAsync(model);
+        var newTodoItem = new TodoItem(model.Name, model.Task);
+
+        await _context.TodoItens.AddAsync(newTodoItem);
 
         await _reportService.Update(model.Name);
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using rabbitmq_example;
 
@@ -11,9 +12,10 @@ using rabbitmq_example;
 namespace api.Migrations
 {
     [DbContext(typeof(TodoListContext))]
-    partial class TodoListContextModelSnapshot : ModelSnapshot
+    [Migration("20240222230823_completed")]
+    partial class completed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,12 +64,6 @@ namespace api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TaskCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TaskUnfinished")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Taskfinished")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

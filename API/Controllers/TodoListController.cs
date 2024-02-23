@@ -39,9 +39,9 @@ public class TodoListController : ControllerBase
     [HttpDelete("{id}")]
     public async Task Delete(int id)
     {
-        await _reportService.Update(id);
-
         _context.TodoItens.Remove(new TodoItem(id));
+
+        await _reportService.Update(id);
 
         await _context.SaveChangesAsync();
     }

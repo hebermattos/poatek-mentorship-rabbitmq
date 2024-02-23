@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,11 +10,13 @@ public class TodoListController : ControllerBase
 {
     private readonly TodoListContext _context;
     private readonly ReportService _reportService;
+    private readonly IBusControl _busControl;
 
-    public TodoListController(TodoListContext context, ReportService reportService)
+    public TodoListController(TodoListContext context, ReportService reportService, IBusControl busControl)
     {
         _context = context;
         _reportService = reportService;
+        _busControl = busControl;
     }
 
     [HttpGet]
@@ -53,7 +56,9 @@ public class TodoListController : ControllerBase
 
         await _context.TodoItens.AddAsync(newTodoItem);
 
-        await _reportService.Update(model.Name);
+        await _busControl.Publish(model);
+
+        //await _reportService.Update(model.Name);
 
         await _context.SaveChangesAsync();
 

@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using rabbitmq_example;
 
@@ -16,6 +17,20 @@ builder.Services.AddDbContext<TodoListContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddMassTransit(x =>
+           {
+               x.UsingRabbitMq((context, cfg) =>
+               {
+                   cfg.Host(builder.Configuration["RabbitMq:host"], "/", h =>
+                {
+                    h.Username(builder.Configuration["RabbitMq:user"]);
+                    h.Password(builder.Configuration["RabbitMq:password"]);
+                });
+
+                   cfg.ConfigureEndpoints(context);
+               });
+           });
 
 
 var app = builder.Build();

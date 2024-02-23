@@ -1,13 +1,21 @@
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using rabbitmq_example;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
+        IConfiguration configuration = hostContext.Configuration;
+
+        services.AddScoped<ReportService>();
+
+        services.AddDbContext<TodoListContext>(options =>
+        {
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+        });
+
         services.AddMassTransit(x =>
         {
-            IConfiguration configuration = hostContext.Configuration;
-
             x.AddConsumer<TodoReportUpdater>();
 
             x.UsingRabbitMq((context, cfg) =>
@@ -20,7 +28,7 @@ IHost host = Host.CreateDefaultBuilder(args)
 
                 cfg.ConfigureEndpoints(context);
             });
-        }); 
+        });
     })
     .Build();
 

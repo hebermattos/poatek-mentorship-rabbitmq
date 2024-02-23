@@ -4,8 +4,15 @@ namespace rabbitmq_example;
 
 public class TodoReportUpdater : IConsumer<TodoItemCreate>
 {
-    public Task Consume(ConsumeContext<TodoItemCreate> context)
+    private ReportService _reportService;
+
+    public TodoReportUpdater(ReportService reportService)
     {
-        throw new NotImplementedException();
+        _reportService = reportService;
+    }
+
+    public async Task Consume(ConsumeContext<TodoItemCreate> context)
+    {
+        await _reportService.Update(context.Message.Name);
     }
 }

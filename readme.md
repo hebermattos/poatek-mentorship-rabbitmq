@@ -1,70 +1,58 @@
-1 - Demo
+# Curso de RabbitMQ
 
-* demonstração de código
+## 1. Demo
+- Exemplo básico
 
-2 - Introdução ao RabbitMQ
+## 2. Introdução ao RabbitMQ
+- História e origens do RabbitMQ como um message broker baseado em AMQP (Advanced Message Queuing Protocol).
+- A importância dos message brokers na arquitetura de sistemas distribuídos.
+- Visão geral da arquitetura do RabbitMQ, incluindo conceitos como produtores, consumidores, filas e trocas.
 
-* Breve história e contexto
-* O que é um message broker e por que é importante
-* Visão geral da arquitetura do RabbitMQ
+## 3. Instalação e configuração
+- Requisitos de sistema, incluindo hardware e software necessários para executar o RabbitMQ.
+- Instruções passo a passo para instalar o RabbitMQ em diferentes sistemas operacionais, como Linux, Windows e macOS.
+- Configurações básicas, como definição de usuários, permissões e políticas de acesso, e configurações avançadas, como clustering e alta disponibilidade.
 
-3 - Instalação e configuração
+## 4. Conceitos fundamentais de RabbitMQ
+- Papel dos produtores e consumidores na troca de mensagens.
+- O que são filas e trocas, e como eles facilitam o encaminhamento de mensagens no RabbitMQ.
+- Uso de bindings para conectar trocas e filas.
 
-* Requisitos de sistema
-* Instalação do RabbitMQ em diferentes sistemas operacionais
-* Configuração básica e avançada
+## 5. Tipos de troca (Exchanges)
+- Explicação detalhada de cada tipo de troca suportado pelo RabbitMQ: Direct, Fanout, Topic e Headers.
+- Cenários de uso para cada tipo de troca, destacando suas diferenças e vantagens.
 
-4 - Conceitos fundamentais de RabbitMQ
+## 6. Modelos de Mensagem
+- Compreensão da diferença entre mensagens persistentes e não persistentes e quando usar cada uma.
+- Discussão sobre o tamanho máximo de mensagem suportado pelo RabbitMQ e como isso pode afetar o design do sistema.
+- Exemplos de formatos de mensagem comuns, como JSON, XML, e como eles podem ser manipulados pelo RabbitMQ.
 
-* Produtores (Producers) e Consumidores (Consumers)
-* Filas (Queues) e trocas (Exchanges)
-* Roteamento de mensagens
+## 7. Padrões de troca de mensagens
+- Explicação dos padrões Publish/Subscribe e como eles podem ser implementados no RabbitMQ.
+- Discussão sobre como usar filas de trabalho (Work Queues) para distribuir tarefas entre vários consumidores.
+- Exemplos de roteamento de mensagens baseados em padrões, como o uso de chaves de roteamento em trocas de tópicos.
 
-5 - Tipos de troca (Exchanges)
+## 8. Confiabilidade e Garantias de Entrega
+- Como o RabbitMQ garante a entrega de mensagens e como os produtores podem confirmar o recebimento das mensagens pelos consumidores.
+- Uso de transações para garantir operações atômicas em mensagens.
+- Estratégias para lidar com falhas e garantir a entrega de mensagens em ambientes de alta disponibilidade.
 
-* Direct Exchange
-* Fanout Exchange
-* Topic Exchange
-* Headers Exchange
+## 9. Integração com outras tecnologias
+- Exemplos de integração do RabbitMQ com frameworks web populares, como Spring Boot no Java.
+- Como o RabbitMQ pode ser usado para integrar sistemas legados com bancos de dados, sistemas de arquivos e outros sistemas de armazenamento.
+- Uso de RabbitMQ em arquiteturas de microsserviços para comunicação assíncrona entre serviços.
 
-6 - Modelos de Mensagem
+## 10. Administração e Monitoramento
+- Visão geral das ferramentas de linha de comando e interfaces gráficas para gerenciar e monitorar o RabbitMQ.
+- Métricas importantes para monitorar o desempenho do RabbitMQ, como taxa de transferência de mensagens, tamanho das filas e utilização da CPU.
+- Estratégias para ajustar o desempenho e a escalabilidade do RabbitMQ com base nos dados de monitoramento.
 
-* Mensagens persistentes vs. não persistentes
-* Tamanhos de mensagem e limites
-* Formatos de mensagem (JSON, XML, etc.)
+## 11. Segurança e Autenticação
+- Configuração de usuários e permissões no RabbitMQ para garantir o acesso seguro ao sistema.
+- Uso de TLS/SSL para criptografar a comunicação entre os componentes do RabbitMQ.
+- Implementação de estratégias de autenticação e autorização personalizadas usando plugins do RabbitMQ.
 
-7 - Padrões de troca de mensagens
-
-* Publish/Subscribe
-* Filas de trabalho (Work Queues)
-* Roteamento de mensagens baseado em padrões
-
-8 - Confiabilidade e Garantias de Entrega
-
-* Confirmações de entrega (Delivery Acknowledgments)
-* Transações
-* Garantias de entrega em ambientes de alta disponibilidade
-
-9 - Integração com outras tecnologias
-
-* Integração com frameworks web (por exemplo, Spring Boot)
-* Integração com bancos de dados e sistemas de armazenamento
-* Integração com microsserviços e arquiteturas orientadas a eventos
-
-10 - Administração e Monitoramento
-
-* Ferramentas de gerenciamento e administração
-* Monitoramento de filas e trocas
-* Tuning de desempenho e escalabilidade
-
-11 - Segurança e Autenticação
-
-* Configuração de usuários e permissões
-* Transport Layer Security (TLS) e Secure Sockets Layer (SSL)
-* Estratégias de autenticação e autorização
-
-12 - Cenários Avançados e Casos de Uso
-
-* Replicação e clustering
-* Encaminhamento de mensagens entre clusters
-* Filas de dead-letter e tratamento de mensagens não processadas
+## 12. Cenários Avançados e Casos de Uso
+- Exploração de cenários avançados de implantação do RabbitMQ, como replicação e clustering para alta disponibilidade e escalabilidade.
+- Discussão sobre como encaminhar mensagens entre clusters RabbitMQ distribuídos geograficamente.
+- Uso de filas de dead-letter para lidar com mensagens não processadas e implementar estratégias de reprocessamento de mensagens.

@@ -25,6 +25,18 @@ services:
       - "15672:15672"
       - "5672:5672"
       - "5552:5552" 
+      
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+    depends_on:
+     - sqlserver
+    environment:
+      - ADM_INSTALL_MSSQL=true
+      - PHP_FPM_INSTALL_MSSQL=true
+      - WORKSPACE_INSTALL_MSSQL=true
 
 volumes:
   dbdata:

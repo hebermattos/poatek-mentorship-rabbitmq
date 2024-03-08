@@ -58,8 +58,6 @@ public class TodoListController : ControllerBase
 
         await _busControl.Publish(model);
 
-        //await _reportService.Update(model.Name);
-
         await _context.SaveChangesAsync();
 
         return newTodoItem;
